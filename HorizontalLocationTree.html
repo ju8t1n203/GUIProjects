@@ -16,7 +16,7 @@
       .connector::after {
         content: "";
         position: absolute;
-        left: calc(200px); /* width of the textbox */
+        left: calc(250px); /* width of the textbox */
         top: 50%;
         transform: translateY(-50%);
         width: 50px; /* length of the line */
@@ -26,6 +26,8 @@
 
       .site-input, .room-input, .area-input, .specifier-input {
         width: 200px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
       .room-button, .area-button, .specifier-button {
@@ -37,7 +39,7 @@
 
   <body>
     <div class="connector">
-      <input type="text" class="site-input" placeholder="Site name">
+      <input type="text" class="site-input" placeholder="Site Name">
       <button class="room-button">Add Room</button>
     </div>
 
