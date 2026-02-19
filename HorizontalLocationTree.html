@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GUI Development</title>
+    <style>
+
+      .connector {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 50px; /* distance between textbox and button */
+      }
+
+      /* the connecting line */
+      .connector::after {
+        content: "";
+        position: absolute;
+        left: calc(200px); /* width of the textbox */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px; /* length of the line */
+        height: 3px;
+        background: black;
+      }
+
+      .site-input, .room-input, .area-input, .specifier-input {
+        width: 200px;
+      }
+
+      .room-button, .area-button, .specifier-button {
+        font-size: 12px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="connector">
+      <input type="text" class="site-input" placeholder="Site name">
+      <button class="room-button">Add Room</button>
+    </div>
+
+    <script src="Tester.js"></script>
+  </body>
+  
+</html>
