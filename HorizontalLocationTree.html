@@ -7,9 +7,41 @@
 
       .connector {
         position: relative;
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 50px; /* distance between textbox and button */
+        gap: 40px; /* distance between textbox group and buttons */
+      }
+
+      /* vertical stacking container used for siblings or the root */
+      .level {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* wrapper for a node and its children; children sit to the right */
+      .node {
+        display: flex;
+        align-items: flex-start;
+        gap: 40px;
+      }
+
+      /* children container stacks its items vertically and is indented */
+      .children.level {
+        margin-left: 80px; /* indent for horizontal growth */
+        border: 1px solid #ccc;
+        padding: 10px;
+        position: relative;
+      }
+      /* vertical line connecting parent node to its children container */
+      .children.level::before {
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #ccc;
       }
 
       /* the connecting line */
@@ -30,20 +62,44 @@
         padding-right: 20px;
       }
 
+      /* stack the textbox and the below-button vertically */
+      .connector .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
       .room-button, .area-button, .specifier-button {
         font-size: 12px;
+      }
+
+      .add-button, .delete-button {
+        font-size: 12px;
+        width: 200px;
       }
 
     </style>
   </head>
 
   <body>
-    <div class="connector">
-      <input type="text" class="site-input" placeholder="Site Name">
-      <button class="room-button">Add Room</button>
+    <div id="root" class="level">
+      <div class="node">
+        <div class="connector">
+          <div class="input-group">
+            <input type="text" class="site-input" placeholder="Site Name">
+            <button class="add-button">+</button>
+          </div>
+          <button class="room-button">Add Room</button>
+        </div>
+        <div class="children level"></div>
+      </div>
+      <!-- additional sibling nodes will be appended here -->
     </div>
 
-    <script src="Tester.js"></script>
+        <script src="utils.js"></script>
+        <script src="ChildBuilder.js"></script>
+        <script src="SiblingBuilder.js"></script>
+        <script src="BranchBuilder.js"></script>
   </body>
   
 </html>
