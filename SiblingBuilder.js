@@ -58,5 +58,5 @@ function addSibling(button) {
 }
 
 // expose globals
-window.addSiblingButton = addSiblingButton;
+//window.addSiblingButton = addSiblingButton;
 window.addSibling = addSibling;

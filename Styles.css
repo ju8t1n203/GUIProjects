@@ -1,0 +1,68 @@
+      /* wrapper for a node and its children; children sit to the right */
+      .node {
+        display: flex;
+        align-items: flex-start;
+        gap: 0px;
+      }
+      
+      /* vertical stacking container used for siblings or the root */
+      .level {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* children container stacks its items vertically and is indented */
+      .children.level {
+        margin-left: 80px; /* indent for horizontal growth */
+        border: 1px solid #000;
+        left: calc(-25px); /* makes box touch connector */
+        padding: 10px;
+        position: relative;
+      }
+
+      .connector {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 65px; /* distance between textbox group and buttons */
+      }
+      
+      /* stack the textbox and the below-button vertically */
+      .connector .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      /* the connecting line */
+      .connector::after {
+        content: "";
+        position: absolute;
+        left: calc(160px); /* width of the textbox */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px; /* length of the line */
+        height: 3px;
+        background: black;
+      }
+
+      /* disabled line */
+      .connector.no-line::after {
+        content: none;
+      }
+
+      .site-input, .room-input, .area-input, .specifier-input {
+        width: 150px;
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+      
+      .room-button, .area-button, .specifier-button {
+        font-size: 12px;
+      }
+
+      .sibling-add {
+        font-size: 12px;
+        width: 150px;
+      }
