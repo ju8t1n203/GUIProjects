@@ -23,7 +23,7 @@ function buildNode(tbName, bName, parentId) {
 
   const newTextbox = document.createElement('input');
   newTextbox.type = 'text';
-  newTextbox.className = tbName.toLowerCase() + '-input';
+  newTextbox.className = 'typical-text-' + tbName.toLowerCase();
   newTextbox.placeholder = tbName + ' Name';
   newTextbox.dataset.id = generateId();
   newTextbox.id = newTextbox.dataset.id;
@@ -37,8 +37,8 @@ function buildNode(tbName, bName, parentId) {
 
   if (bName !== 'Detail') {
     const newButton = document.createElement('button');
-    newButton.className = bName.toLowerCase() + '-button';
-    newButton.textContent = bName;
+    newButton.className = 'typical-btn-' + bName.toLowerCase();
+    newButton.textContent = "Add " + bName;
     newButton.dataset.id = generateId();
     newButton.id = newButton.dataset.id;
     newButton.dataset.parentId = newConnector.dataset.id;

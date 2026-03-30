@@ -1,4 +1,3 @@
-// Non-module version: use globals `generateId` and `buildNode`
 function addSiblingButton(button) {
   const container = button.closest('.children') || document.querySelector('#root');
   if (!container) return;
@@ -58,5 +57,5 @@ function addSibling(button) {
 }
 
 // expose globals
-//window.addSiblingButton = addSiblingButton;
+window.addSiblingButton = addSiblingButton;
 window.addSibling = addSibling;

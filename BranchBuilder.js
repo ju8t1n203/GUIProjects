@@ -6,13 +6,13 @@ window.addChild = function addChild(button) {
   if (!connector) return;
 
   switch (button.className) {
-    case 'room-button':
+    case 'typical-btn-room':
       createChild(button, 'Room', 'Area');
       break;
-    case 'area-button':
+    case 'typical-btn-area':
       createChild(button, 'Area', 'Specifier');
       break;
-    case 'specifier-button':
+    case 'typical-btn-specifier':
       createChild(button, 'Specifier', 'Detail');
       break;
   }
@@ -23,9 +23,9 @@ function initializeExisting() {
 
   // ensure root has a sibling-add for top-level nodes
   const root = document.querySelector('#root');
-  if (root && !root.querySelector(':scope > .sibling-add')) {
+  if (root && !root.querySelector(':scope > .typical-btn-sibling')) {
     const siblingAdd = document.createElement('button');
-    siblingAdd.className = 'sibling-add';
+    siblingAdd.className = 'typical-btn-sibling';
     siblingAdd.textContent = '+';
     siblingAdd.dataset.tbname = 'Site';
     siblingAdd.dataset.bname = 'Room';
@@ -63,12 +63,12 @@ document.addEventListener('click', function(e) {
   const btn = e.target;
   if (btn.tagName !== 'BUTTON') return;
 
-  if (btn.classList.contains('sibling-add')) {
+  if (btn.classList.contains('typical-btn-sibling')) {
     window.addSiblingButton(btn);
   }
-  else if (btn.classList.contains('room-button') ||
-      btn.classList.contains('area-button') ||
-      btn.classList.contains('specifier-button')) {
+  else if (btn.classList.contains('typical-btn-room') ||
+      btn.classList.contains('typical-btn-area') ||
+      btn.classList.contains('typical-btn-specifier')) {
     window.addChild(btn);
   }
 });

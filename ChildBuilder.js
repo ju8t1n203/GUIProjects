@@ -29,10 +29,10 @@ function createChild(button, tbName, bName) {
   childContainer.appendChild(newNode);
 
   // ensure there is exactly one sibling-add button at the bottom of this container
-  let siblingAdd = childContainer.querySelector(':scope > .sibling-add');
+  let siblingAdd = childContainer.querySelector(':scope > .typical-btn-sibling');
   if (!siblingAdd) {
     siblingAdd = document.createElement('button');
-    siblingAdd.className = 'sibling-add';
+    siblingAdd.className = 'typical-btn-sibling';
     siblingAdd.textContent = '+';
     siblingAdd.dataset.tbname = tbName;
     siblingAdd.dataset.bname = bName;
