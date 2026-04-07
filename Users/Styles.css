@@ -53,6 +53,15 @@
     content: none;
   }
 
+    [class^="typical-text"] {
+        font-family: inherit;
+        width: 250px;
+        height: 30px;
+        border-radius: 15px 15px 15px 15px;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
     [class^="short-text"] {
         font-family: inherit;
         width: 150px;
@@ -78,4 +87,12 @@
   [class^="typical-btn"]:disabled{
     color: #000000;
     cursor: not-allowed;
+  }
+
+  #error-msg {
+    display:block;
+    word-wrap:break-word;
+    color: red;
+    font-size:8pt;
+    margin:5px;
   }

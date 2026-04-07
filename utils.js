@@ -23,7 +23,7 @@ function buildNode(tbName, bName, parentId) {
 
   const newTextbox = document.createElement('input');
   newTextbox.type = 'text';
-  newTextbox.className = 'typical-text-' + tbName.toLowerCase();
+  newTextbox.className = 'short-text-' + tbName.toLowerCase();
   newTextbox.placeholder = tbName + ' Name';
   newTextbox.dataset.id = generateId();
   newTextbox.id = newTextbox.dataset.id;
