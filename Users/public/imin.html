@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+
+  <body onload="checkLogin()">
+
+    <h1>Settings</h1>
+
+    <button onclick="logout()">Logout</button>
+
+    <div data-level="1,2,3">
+      <h2 id="sign-in-msg"></h2>
+      <p id="tab-usability"></p>
+    </div>
+
+    <div data-level="3">
+      <h2>Level 3 Content</h2>
+      <p>Admin-only features.</p>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const res = await fetch("/api/me");
+          if (!res.ok) {
+            window.location.href = "/imin.html";
+            return;
+          }
+
+          const user = await res.json();
+          console.log("Logged in user:", user);
+          showContentForLevel(user.level);
+          const name = user.email.split(".")[0].charAt(0).toUpperCase() + user.email.split(".")[0].slice(1);
+          document.getElementById("sign-in-msg").textContent = `Signed in as: ${name}`;
+
+          
+        } catch (err) {
+          console.error(err);
+          window.location.href = "/login.html";
+        }
+
+        const ret = await fetch("/api/usability");
+        const data = await ret.json();
+        document.getElementById("tab-usability").textContent =`${data.features.join(" ")}`;
+
+      });
+
+      function showContentForLevel(level) {
+        document.querySelectorAll("[data-level]").forEach(el => {
+          const allowed = el.getAttribute("data-level").split(",").map(Number);
+          if (allowed.includes(level)) {
+            el.style.display = "block";
+          } else {
+            el.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
